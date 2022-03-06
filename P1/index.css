@@ -1,0 +1,17 @@
+body {
+  background-image: url("fondo.jpeg");
+}
+
+img{
+display:block;
+margin:auto;
+}
+
+h2.sansserif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+p{
+  text-shadow: 3px 2px blue;
+}
+
+p.dotted {border-style: dotted;}
