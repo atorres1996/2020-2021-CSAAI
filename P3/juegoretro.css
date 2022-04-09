@@ -2,5 +2,22 @@ body{
     background-image: url(obra.jpg);
 }
 
+canvas{
+    background-color: blanchedalmond;
+    border-style: solid;    
+    border-width: 4px;
+    border-color: goldenrod;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+
+
+p{
+    text-align: center;
+    font-family: 'Courier New', arial;
+    font-size: 25px;
+
+}
 
 
