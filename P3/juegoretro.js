@@ -72,4 +72,3 @@ function Soltar (e) {
    -def variables
    -dibujar ladrillos
    -funcion colision pelota ladrillo
-
