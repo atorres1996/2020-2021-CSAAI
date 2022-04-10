@@ -110,10 +110,11 @@ function dibujoladrillo() {
 
 
 function dibuja (){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    console.log("test");
     dibujopelota();
     dibujoraqueta();
     dibujoladrillo();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-setInterval(dibuja, 5)
+dibuja();
