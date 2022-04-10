@@ -114,4 +114,4 @@ function dibuja (){
     dibujopelota();
     dibujoraqueta();
     dibujoladrillo();
-   
+}
