@@ -72,3 +72,37 @@ function Soltar (e) {
    -def variables
    -dibujar ladrillos
    -funcion colision pelota ladrillo   */
+
+var filasLadrillo = 5;
+var columnasLadrillo = 10;
+var anchoLadrillo = 60;
+var alturaLadrillo = 20;
+var huecosLadrillo = 5;
+var ladrillos = [];
+var marginTop = 10;
+var marginLeft = 5;
+
+for(c=0; c<columnasLadrillo; c++) {
+    ladrillos[c] = [];
+    for(f=0; f<filasLadrillo; f++) {
+        ladrillos[c][f] = { x: 0, y: 0, estado: 1 };
+    }
+}
+
+function ladrillo() {
+    for(c=0; c<columnasLadrillo; c++) {
+        for(f=0; f<filasLadrillo; f++) {
+            if(ladrillos[c][f].estado == 1) {
+                var ladrilloX = (c*(anchoLadrillo+huecoLadrillo))+marginLeft;
+                var ladrilloY = (f*(alturaLadrillo+huecoLadrillo))+marginTop;
+                ladrillos[c][f].x = ladrilloX;
+                ladrillos[c][f].y = ladrilloY + 30;
+                ctx.beginPath();
+                ctx.rect(ladrilloX, ladrilloY + 30, anchoLadrillo, alturaLadrillo);
+                ctx.fillStyle = "orange";
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+    }
+}
