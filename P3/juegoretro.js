@@ -115,3 +115,5 @@ function dibuja (){
     dibujoraqueta();
     dibujoladrillo();
 }
+
+setInterval(dibuja, 5)
