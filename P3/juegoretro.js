@@ -89,7 +89,7 @@ for(c=0; c<columnasLadrillo; c++) {
     }
 }
 
-function ladrillo() {
+function dibujoladrillo() {
     for(c=0; c<columnasLadrillo; c++) {
         for(f=0; f<filasLadrillo; f++) {
             if(ladrillos[c][f].estado == 1) {
@@ -106,3 +106,12 @@ function ladrillo() {
         }
     }
 }
+
+
+
+function dibuja (){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dibujopelota();
+    dibujoraqueta();
+    dibujoladrillo();
+   
