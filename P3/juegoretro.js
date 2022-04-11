@@ -356,6 +356,6 @@ for (let i = 1; i < ladrillo.f; i++) {
   y += vely;
   requestAnimationFrame(update);
 }
-
-update();
 }
+update();
+
