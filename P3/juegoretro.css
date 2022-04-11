@@ -3,11 +3,29 @@ body{
 }
 
 canvas{
-    background-color: blanchedalmond;
-    border-style: solid;    
-    border-width: 4px;
-    border-color: goldenrod;
+    background-color: #c7ba06;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #ff8800;
     border-radius: 5px;
-    margin-top: 50px;
+    margin-left: 12cm;
+    margin-top: 3cm;
 }
 
+#play_again{
+    width: 3cm;
+    height: 2cm;
+    background-color: rgb(89, 108, 253);
+    color: black;
+    font-size: 20px;
+    font-family: 'Courier New', arial;
+    margin-top: 3cm;
+    margin-left: 23cm;
+}
+
+p{
+    text-align: center;
+    font-family: 'Courier New', arial;
+    font-size: 30px;
+
+}
