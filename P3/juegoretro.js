@@ -81,7 +81,7 @@ for(c=0; c<columnasLadrillo; c++) {
 }
 
 window.onkeydown = (e) => {
-    if (e.key == ' ') {
+    if (e.key == 32) {
         movPelota = true;
     }
 }
@@ -137,7 +137,7 @@ function vidas(){
 //Función para mostrar la puntuación
 function puntos(){
     ctx.fillStyle = "white";
-    ctx.fillText("Score:" + puntuacion, 920, 18);
+    ctx.fillText("Score:" +puntuacion, 920, 18);
     ctx.font = "20px Arial";
     
 }
@@ -185,7 +185,7 @@ function dibuja (){
             }
             else {
                 x = canvas.width/2;
-                y = canvas.height-30;
+                y = canvas.height-20;
                 velx = 1;
                 vely = -2;
                 posicionRaqueta = (canvas.width-anchoBase)/2;
@@ -206,4 +206,4 @@ function dibuja (){
     }
 }
 
-dibuja();
+setInterval(dibuja, 5)
