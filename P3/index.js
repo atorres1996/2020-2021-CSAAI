@@ -99,7 +99,7 @@ function dibujarladrillo() {
     }
 }
 
-function colision() {
+function choque() {
     for(c=0; c<columnasLadrillo; c++) {
         for(f=0; f<filasLadrillo; f++) {
             var b = ladrillos[c][f];
@@ -143,7 +143,7 @@ function dibuja (){
     if (movPelota == false){
         space();
     }
-    colision();
+    choque();
 
 
     if (x >= (canvas.width - radio) || x <= radio) {
