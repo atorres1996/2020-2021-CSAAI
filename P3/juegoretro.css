@@ -4,12 +4,11 @@ body{
 
 canvas{
     background-color: #c7ba06;
-    background-position: initial;
     border-style: solid;
     border-width: 5px;
     border-color: #ff8800;
     border-radius: 5px;
-    
+    position: fixed;
 }
 
 
