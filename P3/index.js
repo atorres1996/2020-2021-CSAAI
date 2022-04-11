@@ -7,21 +7,63 @@ canvas.height = 500;
 
 const ctx = canvas.getContext("2d");
 
-
+//variables y constantes de la pelota
 let radio = 9;
 let x = canvas.width/2;
 let y = canvas.height-30;
 let velx = 1;
 let vely = -2;
+var movPelota = false;
 
+//funcion dibuja la pelota
+function dibujarpelota() {
+    ctx.beginPath();    
+    ctx.arc(x, y, radio, 0, 2 * Math.PI);
+    ctx.fillStyle = 'grey';
+    ctx.fill()
+    ctx.closePath();
+}
+
+
+//variables raqueta
 let alturaRaqueta = 15;
 let anchoRaqueta = 80;
 let posicionRaqueta = (canvas.width-anchoRaqueta)/2;
 var pulsarDerecha = false;
 var pulsarIzquierda = false;
 
-var movPelota = false;
+//funcion dibuja la raqueta
+function dibujarraqueta () {
+    ctx.beginPath();
+    ctx.rect(posicionRaqueta, canvas.height-alturaRaqueta, anchoRaqueta, alturaRaqueta);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+}
 
+
+//variable que lleva los puntos 
+var puntuacion = 0;
+
+//funcion para mostrar puntos
+function puntos() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Puntos: "+puntuacion, 8, 20);
+}
+
+//variable que lleva las vidas
+var vidas = 3;
+
+//funcion para mostrar las vidas
+function vida() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Vidas: "+vidas, canvas.width-65, 20);
+}
+
+
+//variables de los ladrillos
 var filasLadrillo = 6;
 var columnasLadrillo = 10;
 var anchoLadrillo = 60;
@@ -29,14 +71,12 @@ var alturaLadrillo = 20;
 var huecoLadrillo = 15;
 var marginTop = 10;
 var marginLeft = 8;
+var ladrillos = [];
 
-var puntuacion = 0;
-var vidas = 3;
-
+//funciones que afectan a los ladrillos
 document.addEventListener("keydown", Pulsar, false);
 document.addEventListener("keyup", Soltar, false);
 
-var ladrillos = [];
 for(c=0; c<columnasLadrillo; c++) {
     ladrillos[c] = [];
     for(f=0; f<filasLadrillo; f++) {
@@ -66,21 +106,6 @@ function Soltar (e) {
     }
 }
 
-function dibujarpelota() {
-    ctx.beginPath();    
-    ctx.arc(x, y, radio, 0, 2 * Math.PI);
-    ctx.fillStyle = 'grey';
-    ctx.fill()
-    ctx.closePath();
-}
-
-function dibujarraqueta () {
-    ctx.beginPath();
-    ctx.rect(posicionRaqueta, canvas.height-alturaRaqueta, anchoRaqueta, alturaRaqueta);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
-}
 function dibujarladrillo() {
     for(c=0; c<columnasLadrillo; c++) {
         for(f=0; f<filasLadrillo; f++) {
@@ -91,7 +116,7 @@ function dibujarladrillo() {
                 ladrillos[c][f].y = ladrilloY + 30;
                 ctx.beginPath();
                 ctx.rect(ladrilloX, ladrilloY + 30, anchoLadrillo, alturaLadrillo);
-                ctx.fillStyle = "blue";
+                ctx.fillStyle = "orange";
                 ctx.fill();
                 ctx.closePath();
             }
@@ -109,7 +134,7 @@ function choque() {
                     b.estado = 0;
                     puntuacion++;
                     if(puntuacion == filasLadrillo*columnasLadrillo) {
-                        alert("HAS GANADO, ENHORABUENA!");
+                        alert("CONGRATULATIONS, YOU WIN");
                         document.location.reload();
                     }
                 }
@@ -117,20 +142,12 @@ function choque() {
         }
     }
 }
-function puntos() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Puntos: "+puntuacion, 8, 20);
-}
-function vida() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Vidas: "+vidas, canvas.width-65, 20);
-}
+
+//funcion que muestra texto para comenzar el juego
 function space() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Pulsa espacio para lanzar la bola", canvas.width/2-120, canvas.height/2);
+    ctx.fillText("PULSA ESPACIO", canvas.width/2-120, canvas.height/2);
 }
 
 function dibuja (){
@@ -163,7 +180,7 @@ function dibuja (){
             
             movPelota = false;
             if(!vidas) {
-                alert("HAS PERDIDO");
+                alert("GAME OVER");
                 document.location.reload();
             }
             else {
