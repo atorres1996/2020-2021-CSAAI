@@ -139,7 +139,7 @@ function dibuja (){
     dibujarPelota();
     dibujarRaqueta();
     puntos();
-    vidas();
+    vida();
     if (movPelota == false){
         space();
     }
