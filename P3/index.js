@@ -52,6 +52,7 @@ function puntos() {
     ctx.fillText("Puntos: "+puntuacion, 8, 20);
 }
 
+
 //variable que lleva las vidas
 var vidas = 3;
 
@@ -147,7 +148,7 @@ function choque() {
 function space() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("PULSA ESPACIO", canvas.width/2-120, canvas.height/2);
+    ctx.fillText("Pulsar 'espacio' para inciar", canvas.width/2-120, canvas.height/2);
 }
 
 function dibuja (){
@@ -206,5 +207,5 @@ function dibuja (){
     }
 }
 
-setInterval(dibuja, 5)
+dibuja();
 
