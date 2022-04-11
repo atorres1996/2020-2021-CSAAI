@@ -4,8 +4,9 @@ console.log("Ejecutando JS...");
 const canvas = document.getElementById("canvas");
 canvas.width = 800;
 canvas.height = 500;
-canvas.position = 15;
+
 const ctx = canvas.getContext("2d");
+
 
 //variables y constantes de la pelota
 var radio = 9;
