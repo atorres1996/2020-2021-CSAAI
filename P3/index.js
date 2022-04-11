@@ -207,5 +207,5 @@ function dibuja (){
     }
 }
 
-dibuja();
+setInterval(dibuja);
 
