@@ -9,85 +9,89 @@ const ctx = canvas.getContext("2d");
 
 
 
-let radio = 8;
+let radiopelota = 10;
 let x = canvas.width/2;
 let y = canvas.height-30;
 let velx = 1;
 let vely = -2;
-let alturaBase = 10;
-let anchoBase = 80;
-let posicionBase = (canvas.width-anchoBase)/2;
-var pulsacionDerecha = false;
-var pulsacionIzquierda = false;
-var movBola = false;
-var filasLadrillos = 5;
-var columnasLadrillos = 9;
-var anchoLadrillo = 45;
-var alturaLadrillo = 15;
-var huecoLadrillos = 10;
+
+let alturaRaqueta = 20;
+let anchoRaqueta = 80;
+let posicionRaqueta = (canvas.width-anchoBase)/2;
+var pulsarDerecha = false;
+var pulsarIzquierda = false;
+
+var movPelota = false;
+
+var filasLadrillo = 6;
+var columnasLadrillo = 10;
+var anchoLadrillo = 60;
+var alturaLadrillo = 20;
+var huecoLadrillo = 10;
 var marginTop = 10;
 var marginLeft = 8;
-var puntuacion = 0;
+
+var puntos = 0;
 var vidas = 3;
-document.addEventListener("keydown", pulsa, false);
-document.addEventListener("keyup", suelta, false);
+document.addEventListener("keydown", Pulsar, false);
+document.addEventListener("keyup", Soltar, false);
 
 var ladrillos = [];
-for(c=0; c<columnasLadrillos; c++) {
+for(c=0; c<columnasLadrillo; c++) {
     ladrillos[c] = [];
-    for(f=0; f<filasLadrillos; f++) {
+    for(f=0; f<filasLadrillo; f++) {
         ladrillos[c][f] = { x: 0, y: 0, estado: 1 };
     }
 }
 
 window.onkeydown = (e) => {
     if (e.key == ' ') {
-        movBola = true;
+        movPelota = true;
     }
 }
-function pulsa (e) { 
+function Pulsar (e) { 
     if (e.keyCode == 39) {
-        pulsacionDerecha = true;
+        pulsarDerecha = true;
     }
     else if (e.keyCode == 37) {
-        pulsacionIzquierda = true;
+        pulsarIzquierda = true;
     }
 }
-function suelta (e) { 
+function Soltar (e) { 
     if (e.keyCode == 39) {
-        pulsacionDerecha = false;
+        pulsarDerecha = false;
     }
     else if (e.keyCode == 37) {
-        pulsacionIzquierda = false;
+        pulsarIzquierda = false;
     }
 }
 
-function bola() {
+function dibujarPelota() {
     ctx.beginPath();    
-    ctx.arc(x, y, radio, 0, 2 * Math.PI);
-    ctx.fillStyle = 'black';
+    ctx.arc(x, y, radiopelota, 0, 2 * Math.PI);
+    ctx.fillStyle = 'grey';
     ctx.fill()
     ctx.closePath();
 }
 
-function Fbase () {
+function dibujarRaqueta () {
     ctx.beginPath();
-    ctx.rect(posicionBase, canvas.height-alturaBase, anchoBase, alturaBase);
-    ctx.fillStyle = "red";
+    ctx.rect(posicionRaqueta, canvas.height-alturaRaqueta, anchoRaqueta, alturaRaqueta);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
-function ladrillo() {
-    for(c=0; c<columnasLadrillos; c++) {
-        for(f=0; f<filasLadrillos; f++) {
+function dibujarLadrillo() {
+    for(c=0; c<columnasLadrillo; c++) {
+        for(f=0; f<filasLadrillo; f++) {
             if(ladrillos[c][f].estado == 1) {
-                var ladrilloX = (c*(anchoLadrillo+huecoLadrillos))+marginLeft;
-                var ladrilloY = (f*(alturaLadrillo+huecoLadrillos))+marginTop;
+                var ladrilloX = (c*(anchoLadrillo+huecoLadrillo))+marginLeft;
+                var ladrilloY = (f*(alturaLadrillo+huecoLadrillo))+marginTop;
                 ladrillos[c][f].x = ladrilloX;
                 ladrillos[c][f].y = ladrilloY + 30;
                 ctx.beginPath();
                 ctx.rect(ladrilloX, ladrilloY + 30, anchoLadrillo, alturaLadrillo);
-                ctx.fillStyle = "grey";
+                ctx.fillStyle = "blue";
                 ctx.fill();
                 ctx.closePath();
             }
@@ -95,9 +99,9 @@ function ladrillo() {
     }
 }
 
-function colision() {
-    for(c=0; c<columnasLadrillos; c++) {
-        for(f=0; f<filasLadrillos; f++) {
+function choque() {
+    for(c=0; c<columnasLadrillo; c++) {
+        for(f=0; f<filasLadrillo; f++) {
             var b = ladrillos[c][f];
             if(b.estado == 1) {
                 if(x > b.x && x < b.x+anchoLadrillo && y > b.y && y < b.y+alturaLadrillo) {
@@ -131,33 +135,33 @@ function space() {
 
 function dibuja (){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ladrillo();
-    bola();
-    Fbase();
+    dibujarPelota();
+    dibujarRaqueta();
+    dibujarLadrillo();
     puntos();
-    vida();
-    if (movBola == false){
+    vidas();
+    if (movPelota == false){
         space();
     }
-    colision();
+    choque();
 
 
-    if (x >= (canvas.width - radio) || x <= radio) {
+    if (x >= (canvas.width - radiopelota) || x <= radiopelota) {
         velx = -velx;
     }
-    if (y <= radio) {
+    if (y <= radiopelota) {
          vely = -vely;
     }
-    else if (y >= (canvas.height - radio)){
-        if(x > posicionBase && x < posicionBase + anchoBase) {
-            if(y= y- alturaBase){
+    else if (y >= (canvas.height - radiopelota)){
+        if(x > posicionRaqueta && x < posicionRaqueta + anchoRaqueta) {
+            if(y= y- alturaRaqueta){
                 vely = -vely;
             }
         }
         else {
             vidas--;
             
-            movBola = false;
+            movPelota = false;
             if(!vidas) {
                 alert("HAS PERDIDO");
                 document.location.reload();
@@ -167,19 +171,19 @@ function dibuja (){
                 y = canvas.height-30;
                 velx = 1;
                 vely = -2;
-                posicionBase = (canvas.width-anchoBase)/2;
+                posicionRaqueta = (canvas.width-anchoBase)/2;
             }
         }
     }
 
-    if (pulsacionDerecha && posicionBase < canvas.width-anchoBase) {
-        posicionBase = posicionBase + 5;
+    if (pulsarDerecha && posicionRaqueta < canvas.width-anchoRaqueta) {
+        posicionRaqueta = posicionRaqueta + 5;
     }
-    else if (pulsacionIzquierda && posicionBase > 0) {
-        posicionBase = posicionBase - 5;
+    else if (pulsarIzquierda && posicionRaqueta > 0) {
+        posicionRaqueta = posicionRaqueta - 5;
     }
 
-    if (movBola == true){
+    if (movPelota == true){
         x = x + velx;
         y = y + vely;
     }
