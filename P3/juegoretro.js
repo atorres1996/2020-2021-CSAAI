@@ -130,14 +130,14 @@ var puntuacion = 0;
 //Función para mostrar las vidas
 function vidas(){
     ctx.fillStyle = "white";
-    ctx.fillText("Lifes:" +numVidas, 10, 18);
+    ctx.fillText("Vidas:" +numVidas, 10, 18);
     ctx.font = "20px Arial";
 }
 
 //Función para mostrar la puntuación
 function puntos(){
     ctx.fillStyle = "white";
-    ctx.fillText("Score:" +puntuacion, 920, 18);
+    ctx.fillText("Puntos:" +puntuacion, 90, 18);
     ctx.font = "20px Arial";
     
 }
