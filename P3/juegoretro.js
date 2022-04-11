@@ -82,7 +82,7 @@ for(c=0; c<columnasLadrillo; c++) {
 
 window.onkeydown = (e) => {
     if (e.key == ' ') {
-        movBola = true;
+        movPelota = true;
     }
 }
 
