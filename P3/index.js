@@ -2,8 +2,8 @@
 console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
-canvas.width = 900;
-canvas.height = 600;
+canvas.width = 800;
+canvas.height = 500;
 
 const ctx = canvas.getContext("2d");
 
@@ -24,10 +24,10 @@ var pulsarIzquierda = false;
 var movPelota = false;
 
 var filasLadrillo = 6;
-var columnasLadrillo = 10;
+var columnasLadrillo = 8;
 var anchoLadrillo = 60;
 var alturaLadrillo = 20;
-var huecoLadrillo = 10;
+var huecoLadrillo = 5;
 var marginTop = 10;
 var marginLeft = 8;
 
