@@ -8,11 +8,11 @@ canvas.height = 500;
 const ctx = canvas.getContext("2d");
 
 //variables y constantes de la pelota
-let radio = 9;
-let x = canvas.width/2;
-let y = canvas.height-30;
-let velx = 1;
-let vely = -2;
+var radio = 9;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var velx = 1;
+var vely = -2;
 var movPelota = false;
 
 //funcion dibuja la pelota
@@ -116,7 +116,7 @@ function dibujarladrillo() {
                 ladrillos[c][f].y = ladrilloY + 30;
                 ctx.beginPath();
                 ctx.rect(ladrilloX, ladrilloY + 30, anchoLadrillo, alturaLadrillo);
-                ctx.fillStyle = "orange";
+                ctx.fillStyle = "blue";
                 ctx.fill();
                 ctx.closePath();
             }
