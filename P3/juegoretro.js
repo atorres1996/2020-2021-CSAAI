@@ -1,4 +1,4 @@
-
+console.log("Ejecutando JS...");
 
 const canvas = document.getElementById("canvas");
 canvas.width = 800;
@@ -11,7 +11,7 @@ var radiopelota = 8;
 var x = canvas.width/2;
 var y = canvas.height - 20;
 var velx = 1;
-var vely = 2;
+var vely = -2
 var movPelota = false;
 
 /*funcion de la pelota*/
@@ -22,20 +22,15 @@ function dibujopelota() {
     ctx.fill()
     ctx.closePath();
 }
-    
-/*que se comience a mover la pelota al dar al espacio*/
-window.onkeydown = (e) => {
-    if (e.key == ' ') {
-        movPelota = true;
-    }
-}
 
 /*variables de la raqueta*/
 var pulsarDerecha = false;
 var pulsarIzquierda = false;
+
 var alturaRaqueta = 10;
 var anchoRaqueta = 75;
 var posicionRaqueta = (canvas.width - anchoRaqueta)/2;
+
 
 /*funcion de la raqueta*/
 function dibujoraqueta () {
@@ -67,143 +62,173 @@ function Soltar (e) {
     }
 }
 
+window.onkeydown = (e) => {
+    if (e.keyCode  == 32){
+            document.getElementById("parrafo").style.display = "none";
+            velx = 1;
+            vely = -2;
+  
+    }
+}
+
 
 /*tengo que continuar con los ladrillos:
    -def variables
    -dibujar ladrillos
    -funcion colision pelota ladrillo   */
 
-var filasLadrillo = 5;
-var columnasLadrillo = 10;
-var anchoLadrillo = 60;
-var alturaLadrillo = 20;
-var huecosLadrillo = 5;
-var ladrillos = [];
-var marginTop = 10;
-var marginLeft = 5;
 
-for(c=0; c<columnasLadrillo; c++) {
-    ladrillos[c] = [];
-    for(f=0; f<filasLadrillo; f++) {
-        ladrillos[c][f] = { x: 0, y: 0, estado: 1 };
+
+   const ladrillo = {
+    f: 8, //filas
+    c: 13, //columnas
+    alt: 20, //altura de ladrillo
+    anch: 70, //anchura de ladrillo
+    padding: 1, //espacio alrededor del ladrillo
+    visible: true //estado del ladrillo: activo o no
+}
+
+//Estructura de los ladrillos, inicialmente está vacío
+const ladrillos = [];
+
+
+//Recorrer todas las filas
+for (let i = 0; i < ladrillo.f; i++){
+    ladrillos[i] = []; //Inicializa la fila. Las filas son Arrays que inicialmente estás vacíos.
+    
+    for (let j = 0; j < ladrillo.c; j++){
+        ladrillos[i][j] = {
+            x: (ladrillo.anch + ladrillo.padding) * j,
+            y:(ladrillo.alt + ladrillo.padding) * i,
+            anch: ladrillo.anch,
+            alt: ladrillo.alt,
+            padding: ladrillo.padding,
+            visible: ladrillo.visible
+        };
     }
 }
 
-function dibujoladrillo() {
-    for(c=0; c<columnasLadrillo; c++) {
-        for(f=0; f<filasLadrillo; f++) {
-            if(ladrillos[c][f].estado == 1) {
-                var ladrilloX = (c*(anchoLadrillo+huecosLadrillo))+marginLeft;
-                var ladrilloY = (f*(alturaLadrillo+huecosLadrillo))+marginTop;
-                ladrillos[c][f].x = ladrilloX;
-                ladrillos[c][f].y = ladrilloY + 30;
-                ctx.beginPath();
-                ctx.rect(ladrilloX, ladrilloY + 30, anchoLadrillo, alturaLadrillo);
-                ctx.fillStyle = "orange";
-                ctx.fill();
-                ctx.closePath();
-            }
-        }
-    }
-}
-
-function choque() {
-    for(c=0; c<columnasLadrillo; c++) {
-        for(f=0; f<filasLadrillo; f++) {
-            var b = ladrillos[c][f];
-            if(b.estado == 1) {
-                if(x > b.x && x < b.x+anchoLadrillo && y > b.y && y < b.y+alturaLadrillo) {
-                    vely = -vely;
-                    b.estado = 0;
-                    puntuacion++;
-                    if(puntuacion == filasLadrillo*columnasLadrillo) {
-                        alert("Congratulations, YOU WIN!");
-                        document.location.reload();
-                    }
-                }
-            }
-        }
-    }
-}
-
-
+//Variables para las vidas y la puntuación
 var numVidas = 3;
 var puntuacion = 0;
 
 //Función para mostrar las vidas
-function vida(){
+function lifes(){
     ctx.fillStyle = "white";
     ctx.fillText("Lifes:" +numVidas, 10, 18);
     ctx.font = "20px Arial";
 }
 
 //Función para mostrar la puntuación
-function puntos(){
+function points(){
     ctx.fillStyle = "white";
     ctx.fillText("Score:" + puntuacion, 920, 18);
-    ctx.font = "20px Arial"; 
+    ctx.font = "20px Arial";
+    
 }
 
-function space() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Pulsa espacio para comenzar", canvas.width/2-120, canvas.height/2);
+//-- Funcion principal de animacion
+function update(){
+  console.log("test");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dibujoraqueta();
+  dibujopelota();
+  lifes();
+  points();
+
+//Bucle para pintar los ladrillos
+//Recorre todas las filas y columnas
+for (let i = 1; i < ladrillo.f; i++){
+    for(let j = 1; j < ladrillo.c; j++){
+      if (ladrillos[i][j].visible){
+          ctx.beginPath();
+          ctx.rect(ladrillos[i][j].x, ladrillos[i][j].y, ladrillo.anch, ladrillo.alt);
+          ctx.fillStyle = "#B802AF";
+          ctx.fill();
+          ctx.closePath();
+      }
+    }
 }
 
-function dibuja (){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    dibujoladrillo();
-    dibujopelota();
-    dibujoraqueta();
-    puntos();
-    vida();
-    if (movBola == false){
-        space();
-    }
-    choque();
-
-
-    if (x >= (canvas.width - radio) || x <= radio) {
-        velx = -velx;
-    }
-    if (y <= radio) {
-         vely = -vely;
-    }
-    else if (y >= (canvas.height - radio)){
-        if(x > posicionRaqueta && x < posicionRaqueta + anchoRaqueta) {
-            if(y= y- alturaRaqueta){
-                vely = -vely;
-            }
+//Bucle para la colisión de la pelota con los ladrillos.
+for (let i = 1; i < ladrillo.f; i++) {
+    for (let j = 1; j < ladrillo.c; j++) {
+      if (ladrillos[i][j].visible) {
+        if ((y >= ladrillos[i][j].y) && (y <= (ladrillos[i][j].y + 20))){
+          if ((x >= ladrillos[i][j].x) && (x <= (ladrillos[i][j].x + 70))){
+            ladrillos[i][j].visible = false;
+            vely = -vely;
+            puntuacion += 1;
+          }
         }
-        else {
-            vidas--;
-            
-            movBola = false;
-            if(!vidas) {
-                alert("GAME OVER");
-                document.location.reload();
-            }
-            else {
-                x = canvas.width/2;
-                y = canvas.height-30;
-                velx = 1;
-                vely = -2;
-                posicionRaqueta = (canvas.width-anchoRaqueta)/2;
-            }
-        }
+      }
     }
+  }
 
-    if (pulsarDerecha && posicionRaqueta < canvas.width-anchoBase) {
-        posicionRaqueta = posicionRaqueta + 5;
-    }
-    else if (pulsarIzquierda && posicionRaqueta > 0) {
-        posicionRaqueta = posicionRaqueta - 5;
-    }
+  //Definimos el movimiento de la pelota y que ocurre cuando choca con la raqueta
 
-    if (movBola == true){
-        x = x + velx;
-        y = y + vely;
-    }
+  if(x + velx > canvas.width - radiopelota || x + velx < radiopelota){
+      velx = -velx;
+  }
+  if(y + vely < radiopelota) {
+      vely = -vely;
+  }else if(y + vely > canvas.height - radiobola){
+      if(x > posicionRaqueta && x <posicionRaqueta + anchoRaqueta){
+          let puntoColision = x - (posicionRaqueta + anchoRaqueta/2);
+          puntoColision = puntoColision / (anchoRaqueta/2);
+          let angulo = puntoColision * Math.PI/3;o
+          velx = 1 * Math.sin(angulo);
+          vely = -2 * Math.cos(angulo);
+          
+      }
+  }
+
+  //Definimos lo que ocurre cuando la pelota toca el suelo (pérdida de vida)
+
+  if (y >= canvas.height){
+      //Posiciones y velocidad de la pelota y raqueta al perder vida
+      velx = 0;
+      vely = 0;
+      x = canvas.width/2;
+      y = canvas.height - 10;
+      posicionRaqueta = (canvas.width - anchoRaqueta)/2;
+      numVidas -= 1;
+
+  }else if(numVidas == 0){
+      //Posiciones y velocidad de la pelota y raqueta al perder la partida:
+      velx = 0;
+      vely = 0;
+      posicionRaqueta = (canvas.width - anchoRaqueta)/2;
+      document.getElementById("canvas").style.display = "none";
+      document.getElementById("play_again").style.display = "";
+      document.getElementById("parrafo1").style.display = "none";
+     
+
+
+  }
+//Definimos que ocurre cuando se destruyen todos los bloques(ganamos el juego)
+  if(puntuacion == 84){
+    //Posiciones y velocidad de la pelota y raqueta al ganar la partida:
+    velx = 0;
+    vely = 0;
+    posicionRaqueta = (canvas.width - alturaRaqueta)/2;
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("play_again").style.display = "";
+    document.getElementById("parrafo1").style.display = "none";
+  }
+
+  //Definimos el movimiento y la velocidad de la raqueta
+  if(pulsarDerecha && posicionRaqueta < canvas.width - anchoRaqueta){
+      posicionRaqueta += 7;
+  }else if(pulsarIzquierda && posicionRaqueta > 0) {
+      posicionRaqueta -= 7;
+  }
+
+  //Volver a ejecutar update cuando toque
+  x += velx;
+  y += vely;
+  requestAnimationFrame(update);
 }
 
-setInterval(dibuja, 5)
+//-- ¡Que empiece la función!
+update();
