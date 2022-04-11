@@ -135,7 +135,7 @@ function space() {
 
 function dibuja (){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    dibujarLadrillo():
+    dibujarLadrillo();
     dibujarPelota();
     dibujarRaqueta();
     puntos();
