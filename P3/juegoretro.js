@@ -145,7 +145,10 @@ function puntos(){
 function space() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText("Pulsa espacio para lanzar la bola", canvas.width/2-120, canvas.height/2);
+    ctx.fillText("Pulsa espacio para lanzar la bola", canvas.width/2-120, canvas.height/2); 
+    document.getElementById("parrafo").style.display = "none";
+    velx = 1;
+    vely = -2;
 }
 
 
@@ -158,13 +161,9 @@ function dibuja (){
     vidas();
 
     if (movPelota == false){
-        space();{
-            document.getElementById("parrafo").style.display = "none";
-            velx = 1;
-            vely = -2;
-  
+        space();
     }
-    }
+
     choque();
 
 
