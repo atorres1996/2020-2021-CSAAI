@@ -63,7 +63,7 @@ function Soltar (e) {
         pulsarIzquierda = false;
     }
 }
-
+/*
 var filasLadrillo = 6;
 var columnasLadrillo = 10;
 var anchoLadrillo = 70;
@@ -208,8 +208,8 @@ function dibuja (){
 
 setInterval(dibuja, 5)
 
+*/
 
-/*ladrillos 
 
 const ladrillo = {
     f: 6, //filas
@@ -359,4 +359,3 @@ for (let i = 1; i < ladrillo.f; i++) {
 
 update();
 }
-/*/
