@@ -171,7 +171,7 @@ function dibuja (){
                 y = canvas.height-30;
                 velx = 1;
                 vely = -2;
-                posicionRaqueta = (canvas.width-anchoBase)/2;
+                posicionRaqueta = (canvas.width-anchoRaqueta)/2;
             }
         }
     }
