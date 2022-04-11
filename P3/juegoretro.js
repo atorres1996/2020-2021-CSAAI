@@ -64,12 +64,6 @@ function Soltar (e) {
     }
 }
 
-window.onkeydown = (e) => {
-    if (e.key == ' ') {
-        movBola = true;
-    }
-}
-
 var filasLadrillo = 6;
 var columnasLadrillo = 10;
 var anchoLadrillo = 70;
@@ -83,6 +77,12 @@ for(c=0; c<columnasLadrillo; c++) {
     ladrillos[c] = [];
     for(f=0; f<filasLadrillo; f++) {
         ladrillos[c][f] = { x: 0, y: 0, estado: 1 };
+    }
+}
+
+window.onkeydown = (e) => {
+    if (e.key == ' ') {
+        movBola = true;
     }
 }
 
