@@ -13,7 +13,7 @@ var x = canvas.width/2;
 var y = canvas.height - 20;
 var velx = 1;
 var vely = -2;
-movPelota = false
+var movPelota = false
 
 
 //funcion de la pelota
