@@ -221,3 +221,4 @@ for (let i = 1; i < ladrillo.f; i++) {
 }
 
 update();
+}
