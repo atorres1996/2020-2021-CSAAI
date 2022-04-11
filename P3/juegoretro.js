@@ -93,8 +93,8 @@ function dibujoladrillo() {
     for(c=0; c<columnasLadrillo; c++) {
         for(f=0; f<filasLadrillo; f++) {
             if(ladrillos[c][f].estado == 1) {
-                var ladrilloX = (c*(anchoLadrillo+huecoLadrillo))+marginLeft;
-                var ladrilloY = (f*(alturaLadrillo+huecoLadrillo))+marginTop;
+                var ladrilloX = (c*(anchoLadrillo+huecosLadrillo))+marginLeft;
+                var ladrilloY = (f*(alturaLadrillo+huecosLadrillo))+marginTop;
                 ladrillos[c][f].x = ladrilloX;
                 ladrillos[c][f].y = ladrilloY + 30;
                 ctx.beginPath();
@@ -107,14 +107,103 @@ function dibujoladrillo() {
     }
 }
 
-
-
-function dibuja (){
-    console.log("test");
-    dibujopelota();
-    dibujoraqueta();
-    dibujoladrillo();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function choque() {
+    for(c=0; c<columnasLadrillo; c++) {
+        for(f=0; f<filasLadrillo; f++) {
+            var b = ladrillos[c][f];
+            if(b.estado == 1) {
+                if(x > b.x && x < b.x+anchoLadrillo && y > b.y && y < b.y+alturaLadrillo) {
+                    vely = -vely;
+                    b.estado = 0;
+                    puntuacion++;
+                    if(puntuacion == filasLadrillo*columnasLadrillo) {
+                        alert("Congratulations, YOU WIN!");
+                        document.location.reload();
+                    }
+                }
+            }
+        }
+    }
 }
 
-dibuja();
+
+var numVidas = 3;
+var puntuacion = 0;
+
+//Función para mostrar las vidas
+function vida(){
+    ctx.fillStyle = "white";
+    ctx.fillText("Lifes:" +numVidas, 10, 18);
+    ctx.font = "20px Arial";
+}
+
+//Función para mostrar la puntuación
+function puntos(){
+    ctx.fillStyle = "white";
+    ctx.fillText("Score:" + puntuacion, 920, 18);
+    ctx.font = "20px Arial"; 
+}
+
+function space() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("Pulsa espacio para comenzar", canvas.width/2-120, canvas.height/2);
+}
+
+function dibuja (){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dibujoladrillo();
+    dibujopelota();
+    dibujoraqueta();
+    puntos();
+    vida();
+    if (movBola == false){
+        space();
+    }
+    choque();
+
+
+    if (x >= (canvas.width - radio) || x <= radio) {
+        velx = -velx;
+    }
+    if (y <= radio) {
+         vely = -vely;
+    }
+    else if (y >= (canvas.height - radio)){
+        if(x > posicionRaqueta && x < posicionRaqueta + anchoRaqueta) {
+            if(y= y- alturaRaqueta){
+                vely = -vely;
+            }
+        }
+        else {
+            vidas--;
+            
+            movBola = false;
+            if(!vidas) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x = canvas.width/2;
+                y = canvas.height-30;
+                velx = 1;
+                vely = -2;
+                posicionRaqueta = (canvas.width-anchoRaqueta)/2;
+            }
+        }
+    }
+
+    if (pulsarDerecha && posicionRaqueta < canvas.width-anchoBase) {
+        posicionRaqueta = posicionRaqueta + 5;
+    }
+    else if (pulsarIzquierda && posicionRaqueta > 0) {
+        posicionRaqueta = posicionRaqueta - 5;
+    }
+
+    if (movBola == true){
+        x = x + velx;
+        y = y + vely;
+    }
+}
+
+setInterval(dibuja, 5)
