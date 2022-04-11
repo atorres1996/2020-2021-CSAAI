@@ -158,7 +158,12 @@ function dibuja (){
     vidas();
 
     if (movPelota == false){
-        space();
+        space();{
+            document.getElementById("parrafo").style.display = "none";
+            velx = 1;
+            vely = -2;
+  
+    }
     }
     choque();
 
