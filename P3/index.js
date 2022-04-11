@@ -13,24 +13,28 @@ let x = canvas.width/2;
 let y = canvas.height-30;
 let velx = 1;
 let vely = -2;
+
 let alturaRaqueta = 15;
 let anchoRaqueta = 80;
 let posicionRaqueta = (canvas.width-anchoRaqueta)/2;
 var pulsarDerecha = false;
 var pulsarIzquierda = false;
+
 var movPelota = false;
+
 var filasLadrillo = 6;
 var columnasLadrillo = 10;
 var anchoLadrillo = 60;
 var alturaLadrillo = 20;
-var huecoLadrillo = 10;
+var huecoLadrillo = 15;
 var marginTop = 10;
 var marginLeft = 8;
+
 var puntuacion = 0;
 var vidas = 3;
 
-document.addEventListener("keydown", pulsa, false);
-document.addEventListener("keyup", suelta, false);
+document.addEventListener("keydown", Pulsar, false);
+document.addEventListener("keyup", Soltar, false);
 
 var ladrillos = [];
 for(c=0; c<columnasLadrillo; c++) {
@@ -45,7 +49,7 @@ window.onkeydown = (e) => {
         movPelota = true;
     }
 }
-function pulsa (e) { 
+function Pulsar (e) { 
     if (e.keyCode == 39) {
         pulsarDerecha = true;
     }
@@ -53,7 +57,7 @@ function pulsa (e) {
         pulsarIzquierda = true;
     }
 }
-function suelta (e) { 
+function Soltar (e) { 
     if (e.keyCode == 39) {
         pulsarDerecha = false;
     }
@@ -62,7 +66,7 @@ function suelta (e) {
     }
 }
 
-function bola() {
+function dibujarpelota() {
     ctx.beginPath();    
     ctx.arc(x, y, radio, 0, 2 * Math.PI);
     ctx.fillStyle = 'grey';
@@ -70,14 +74,14 @@ function bola() {
     ctx.closePath();
 }
 
-function Fbase () {
+function dibujarraqueta () {
     ctx.beginPath();
     ctx.rect(posicionRaqueta, canvas.height-alturaRaqueta, anchoRaqueta, alturaRaqueta);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
-function ladrillo() {
+function dibujarladrillo() {
     for(c=0; c<columnasLadrillo; c++) {
         for(f=0; f<filasLadrillo; f++) {
             if(ladrillos[c][f].estado == 1) {
@@ -131,9 +135,9 @@ function space() {
 
 function dibuja (){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ladrillo();
-    bola();
-    Fbase();
+    dibujarladrillo();
+    dibujarpelota();
+    dibujarraqueta();
     puntos();
     vida();
     if (movPelota == false){
