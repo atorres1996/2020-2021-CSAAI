@@ -72,7 +72,6 @@ window.onkeydown = (e) => {
     }
 }
 
-
 //ladrillos 
 
 const ladrillo = {
@@ -100,33 +99,32 @@ for (let i = 0; i < ladrillo.f; i++){
     }
 }
 
-//Variables vidas y puntos
-var numVidas = 3;
-var puntuacion = 0;
-
-//Función para mostrar las vidas
-function lifes(){
-    ctx.fillStyle = "white";
-    ctx.fillText("Lifes:" +numVidas, 10, 18);
-    ctx.font = "20px Arial";
-}
+var puntos = 0;
 
 //Función para mostrar la puntuación
-function points(){
+function puntuacion(){
     ctx.fillStyle = "white";
-    ctx.fillText("Score:" + puntuacion, 920, 18);
+    ctx.fillText("Puntos:" + puntuacion, 920, 18);
     ctx.font = "20px Arial";
-    
+
+//Variables vidas y puntos
+var numVidas = 3;
+
+//Función para mostrar las vidas
+function Vidas(){
+    ctx.fillStyle = "white";
+    ctx.fillText("Vidas:" +numVidas, 10, 18);
+    ctx.font = "20px Arial";
 }
 
 //-- Funcion principal de animacion
 function update(){
   console.log("test");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  dibujoraqueta();
   dibujopelota();
-  lifes();
-  points();
+  dibujoraqueta();
+  puntos();
+  Vidas();
 
 //Bucle para pintar los ladrillos
 //Recorre todas las filas y columnas
@@ -164,7 +162,7 @@ for (let i = 1; i < ladrillo.f; i++) {
   }
   if(y + vely < radiopelota) {
       vely = -vely;
-  }else if(y + vely > canvas.height - radiobola){
+  }else if(y + vely > canvas.height - radiopelota){
       if(x > posicionRaqueta && x <posicionRaqueta + anchoRaqueta){
           let puntoColision = x - (posicionRaqueta + anchoRaqueta/2);
           puntoColision = puntoColision / (anchoRaqueta/2);
