@@ -189,7 +189,7 @@ function dibuja (){
     }
 }
 
-dibuja();
+setInterval(dibuja, 5)
 
 
 
