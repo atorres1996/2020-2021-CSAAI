@@ -11,9 +11,9 @@ const ctx = canvas.getContext("2d");
 var radiopelota = 8;
 var x = canvas.width/2;
 var y = canvas.height - 20;
-var velx = 1;
-var vely = -2
-var movPelota = false;
+var velx = 0;
+var vely = 0;
+var aleat = (Math.random() * 4) + 4;
 
 //funcion de la pelota
 function dibujopelota() {
@@ -76,11 +76,11 @@ window.onkeydown = (e) => {
 //ladrillos 
 
 const ladrillo = {
-    f: 8, //filas
-    c: 13, //columnas
+    f: 6, //filas
+    c: 12, //columnas
     alt: 20, //altura de ladrillo
     anch: 70, //anchura de ladrillo
-    padding: 1, //espacio alrededor del ladrillo
+    padding: 2, //espacio alrededor del ladrillo
     visible: true //estado del ladrillo: activo o no
 }
 const ladrillos = [];
