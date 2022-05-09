@@ -6,7 +6,7 @@ const img = document.getElementById('imagesrc');
 const ctx = canvas.getContext('2d');
 
 const gris = document.getElementById('gris');
-const decolor = document.getElementById('decolor');
+const vuetltaColor = document.getElementById('vueltaColor');
 const reset = document.getElementById('reset');
 
 

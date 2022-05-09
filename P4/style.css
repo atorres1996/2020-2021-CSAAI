@@ -1,4 +1,8 @@
 
+body{
+  background:grey;
+  font-family: 'Courier New', Courier, monospace
+} 
 
 #imagenReal {
   float: left;
@@ -15,6 +19,7 @@
   margin-right: 80px;
   margin-top: 50px;
 }
+
 .center {
   text-align: center;
 }
@@ -23,11 +28,6 @@
   text-align: center;
   margin-bottom: 50px;
 }
-
-body{
-  background:red;
-  font-family: 'Courier New', Courier, monospace
-} 
 
 button{
   background-color: black;
