@@ -2,12 +2,14 @@
   float: left;
   text-align: center;
   margin-left: 80px;
+  margin-right: auto;
   margin-top: 50px;
 }
 
 #imagenModificada {
   float: right;
   text-align: center;
+  margin-left: auto;
   margin-right: 80px;
   margin-top: 50px;  
 }
@@ -38,3 +40,4 @@ button{
   border: 3px solid rgb(173, 173, 173);
   width: 75px;
 }
+
