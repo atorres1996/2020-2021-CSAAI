@@ -20,12 +20,12 @@ const range_valueG = document.getElementById('range_valueG');
 const range_valueB = document.getElementById('range_valueB');
 
 
-const gris = {
+const GREY = {
     GRIS: 1,
     COLOR: 0,
 }
 
-let estado = gris;
+let estado = GREY;
 
 
 img.onload = function () {
@@ -81,25 +81,25 @@ function fotogris() {
 
   ctx.putImageData(imgData, 0, 0);
 
-  estado = gris;
+  estado =  GREY;
 
 }
 
 
 deslizadorR.oninput = () => {
-    if (estado == gris){
+    if (estado == GREY){
         color();
     }
 }
 
 deslizadorG.oninput = () => {
-    if (estado == gris){
+    if (estado ==  GREY){
         color();
     }
 }
 
 deslizadorB.oninput = () => {
-    if (estado == gris){
+    if (estado == GREY){
         color();
     }
 }
@@ -109,7 +109,7 @@ gris.onclick = () => {
 }
 
 decolor.onclick = () => {
-    estado = gris;
+    estado = GREY;
     color ();
 }
 
@@ -123,7 +123,7 @@ reset.onclick = () => {
     range_valueB.innerHTML = deslizadorB.value;
 
     ctx.drawImage(img, 0,0);
-    estado = gris;
+    estado = GREY;
 }
 
 console.log("Fin...");
