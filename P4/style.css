@@ -1,17 +1,18 @@
 #imagenO {
   float: left;
   text-align: center;
-  margin-left: 100px;
-  margin-right: auto;
+  margin-left: 80px;
   margin-top: 50px;
+  size: 8cm;
 }
 
 #imagenM {
   float: right;
   text-align: center;
-  margin-left: auto;
-  margin-right: 100px;
+  margin-right: 80px;
   margin-top: 50px;
+  size: 10ch;
+  
 }
 
 #deslizadores {
