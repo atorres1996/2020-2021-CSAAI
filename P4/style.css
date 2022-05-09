@@ -1,4 +1,4 @@
-#imagenO {
+#imagenReal {
   float: left;
   text-align: center;
   margin-left: 100px;
@@ -6,7 +6,7 @@
   margin-top: 50px;
 }
 
-#imagenM {
+#imagenModificada {
   float: right;
   text-align: center;
   margin-left: auto;
