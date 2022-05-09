@@ -5,38 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <script src="index.js".js" defer></script>
     <link rel="shortcut icon" type="image/jpeg" href="border.jpeg"/>
-    <title>Práctica 4</title>
+    <title>Filtrado de imagenes</title>
 </head>
+
 <body>
     <div>
         <div id="imagenReal">
             <h1>Imagen Original</h1>
-            <img src="border.jpeg" id="imagesrc" alt="Imagen FPGA">
+            <img src="MotoRED.jpg" id="imagesrc" alt="Imagen FPGA">
         </div>
         <div id="imagenModificada">
-            <h1 text-align="center">Imagen Modificada</h1>
+            <h1>Imagen Modificada</h1>
             <canvas id="canvas"></canvas>
         </div>
     </div>
     
 
-    <div id="ajustarDeslizando">
-        <h2>Filtrado de imagen</h2>
-
+    <div id="deslizadores">
+        <h2>Gama de colores</h2>
         <p class="center">Establece el umbral de rojo:</p>
         <input class="center" type="range" id="deslizadorR" min="0" max="255" value="255"/>
         <p class="center" id="range_valueR">00</p>
-
         <p class="center">Establece el umbral de verde:</p>
         <input class="center" type="range" id="deslizadorG" min="0" max="255" value="255"/>
         <p class="center" id="range_valueG">00</p>
-
         <p class="center">Establece el umbral de azul:</p>
         <input class="center" type="range" id="deslizadorB" min="0" max="255" value="255"/>
         <p class="center" id="range_valueB">00</p>
-
         <button id="gris">Gris</button>
         <button id="reset">Reset</button>
         <button id="decolor">Color</button>
