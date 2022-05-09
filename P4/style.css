@@ -1,4 +1,4 @@
-#imagenO {
+#imagenReal {
   float: left;
   text-align: center;
   margin-left: 80px;
@@ -6,7 +6,7 @@
   size: 8cm;
 }
 
-#imagenM {
+#imagenModificada {
   float: right;
   text-align: center;
   margin-right: 80px;
@@ -15,7 +15,7 @@
   
 }
 
-#deslizadores {
+#ajustarDeslizando {
   text-align: center;
   margin-bottom: 50px;
 }
@@ -25,16 +25,16 @@
 }
 
 body{
-  color: rgb(56, 56, 56); 
+  color: rgb(102, 102, 102); 
   background: linear-gradient(90deg, rgb(150, 150, 150) 0%, rgb(210, 210, 210) 20%, rgb(245, 245, 245) 50%, rgb(210, 210, 210) 80%, rgb(150, 150, 150) 100%);
-  font-family: Arial, Helvetica, sans-serif, monospace;
+  font-family: Arial, monospace;
 } 
 
 button{
   background-color: rgb(44, 44, 44);
   color: white;
-  padding: 14px;
-  font-size: 16px;
+  padding: 15px;
+  font-size: 15px;
   margin: 5px 2px;
   margin-left: 16px;
   border-radius: 20px 20px 20px 20px;
