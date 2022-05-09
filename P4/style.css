@@ -3,16 +3,13 @@
   text-align: center;
   margin-left: 80px;
   margin-top: 50px;
-  size: 8cm;
 }
 
 #imagenModificada {
   float: right;
   text-align: center;
   margin-right: 80px;
-  margin-top: 50px;
-  size: 10ch;
-  
+  margin-top: 50px;  
 }
 
 #ajustarDeslizando {
