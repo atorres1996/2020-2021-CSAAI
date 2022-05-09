@@ -1,26 +1,17 @@
-body{
-  background:grey;
-  font-family: 'Courier New', Courier, monospace
-} 
-
-#imagenReal {
+#imagenO {
   float: left;
   text-align: center;
-  margin-left: 80px;
+  margin-left: 100px;
   margin-right: auto;
   margin-top: 50px;
 }
 
-#imagenModificada {
+#imagenM {
   float: right;
   text-align: center;
   margin-left: auto;
-  margin-right: 80px;
+  margin-right: 100px;
   margin-top: 50px;
-}
-
-.center {
-  text-align: center;
 }
 
 #deslizadores {
@@ -28,14 +19,23 @@ body{
   margin-bottom: 50px;
 }
 
+.center {
+  text-align: center;
+}
+
+body{
+  background-color: grey;
+  font-family: Arial, Helvetica, sans-serif, monospace;
+} 
+
 button{
-  background-color: black;
+  background-color: rgb(44, 44, 44);
   color: white;
   padding: 14px;
   font-size: 16px;
   margin: 5px 2px;
   margin-left: 16px;
-  border-radius: 25px 25px 25px 25px;
-  border: 3px solid black;
+  border-radius: 20px 20px 20px 20px;
+  border: 3px solid rgb(173, 173, 173);
   width: 75px;
 }
