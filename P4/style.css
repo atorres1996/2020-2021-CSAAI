@@ -3,7 +3,7 @@
 #imagenReal {
   float: left;
   text-align: center;
-  margin-left: 100px;
+  margin-left: 80px;
   margin-right: auto;
   margin-top: 50px;
 }
@@ -12,7 +12,7 @@
   float: right;
   text-align: center;
   margin-left: auto;
-  margin-right: 100px;
+  margin-right: 80px;
   margin-top: 50px;
 }
 .center {
@@ -25,7 +25,7 @@
 }
 
 body{
-  background-color: grey;
+  background-color: red;
   font-family: 'Courier New', Courier, monospace
 } 
 
@@ -36,7 +36,7 @@ button{
   font-size: 16px;
   margin: 5px 2px;
   margin-left: 16px;
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 25px 25px 25px 25px;
   border: 3px solid black;
   width: 75px;
 }
