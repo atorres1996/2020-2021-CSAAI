@@ -1,3 +1,7 @@
+.center {
+  text-align: center;
+}
+
 #imagenReal {
   float: left;
   text-align: center;
@@ -19,24 +23,19 @@
   margin-bottom: 50px;
 }
 
-.center {
-  text-align: center;
-}
-
 body{
-  color: rgb(56, 56, 56); 
-  background: linear-gradient(90deg, rgb(150, 150, 150) 0%, rgb(210, 210, 210) 20%, rgb(245, 245, 245) 50%, rgb(210, 210, 210) 80%, rgb(150, 150, 150) 100%);
-  font-family: Arial, Helvetica, sans-serif, monospace;
+  background-color: grey;
+  font-family: 'Courier New', Courier, monospace
 } 
 
 button{
-  background-color: rgb(44, 44, 44);
+  background-color: black;
   color: white;
   padding: 14px;
   font-size: 16px;
   margin: 5px 2px;
   margin-left: 16px;
   border-radius: 20px 20px 20px 20px;
-  border: 3px solid rgb(173, 173, 173);
+  border: 3px solid black;
   width: 75px;
 }
